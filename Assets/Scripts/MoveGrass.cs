@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MoveGrass : MonoBehaviour {
+public class MoveGrass : MonoBehaviour
+{
 
     private Vector3 lastPos;
     private Vector3 parentTransform;
     private ParticleSystem ps;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         ps = GetComponent<ParticleSystem>();
         parentTransform = GetComponentInParent<Transform>().position;
     }
