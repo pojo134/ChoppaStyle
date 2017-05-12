@@ -5,12 +5,14 @@ using System.Collections;
 public class ClickToMove : MonoBehaviour
 {
 
-    public Transform playerShip,cursor;
+    public Transform playerShip, cursor;
     private float targetLat;
     private float targetLon;
     private float currentLat;
     private float currentLon;
     public float moveSpeed;
+    public GameObject playerLaser;
+    private Vector3 laserTarget;
 
     // Use this for initialization
     void Awake()
@@ -28,7 +30,7 @@ public class ClickToMove : MonoBehaviour
         {
             // draw a line in the editor to visualize the hit point
             Debug.DrawRay(hit.point, hit.normal, Color.yellow);
-            
+
             // convert the hit point into local coordinates
             Vector3 localPos = transform.InverseTransformPoint(hit.point);
             Vector3 longDir = localPos;
@@ -60,7 +62,27 @@ public class ClickToMove : MonoBehaviour
         transform.localRotation =
             Quaternion.AngleAxis(-currentLat, Vector3.right) *
             Quaternion.AngleAxis(currentLon, Vector3.up);
-        playerShip.transform.rotation = Quaternion.LookRotation(hit.point, Vector3.back);
+
+
+        //Move player ship to face cursor
+        if (hit.point != Vector3.zero)
+        {
+            playerShip.transform.rotation = Quaternion.LookRotation(hit.point, Vector3.back);
+        }
+
+        //Fire laser to cursor location
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            laserTarget = hit.point;
+            playerLaser = Instantiate(playerLaser, new Vector3(playerShip.position.x, playerShip.position.y, playerShip.position.z + 1), playerShip.rotation);
+            playerLaser.transform.LookAt(laserTarget);
+
+        }
+        if (laserTarget != Vector3.zero)
+        {
+            playerLaser.transform.position = Vector3.Lerp(playerLaser.transform.position, new Vector3(laserTarget.x, laserTarget.y, laserTarget.z + 0.6f), Time.deltaTime * 5);
+        }
     }
 
 }

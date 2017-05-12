@@ -86,8 +86,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ClickToMove.cs" />
     <Compile Include="Assets\Scripts\Controls.cs" />
+    <Compile Include="Assets\Scripts\DestroyOnColliision.cs" />
     <Compile Include="Assets\Scripts\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\MoveGrass.cs" />
+    <Compile Include="Assets\Scripts\MoveSun.cs" />
     <Compile Include="Assets\Scripts\PlayerShooting.cs" />
     <Compile Include="Assets\Scripts\tileMap.cs" />
   </ItemGroup>
