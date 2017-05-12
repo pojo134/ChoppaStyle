@@ -12,6 +12,6 @@ public class MoveSun : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Rotate(rotSpeed * Time.deltaTime, 0, 0);
+        transform.Rotate(0, rotSpeed * Time.deltaTime, 0);
     }
 }

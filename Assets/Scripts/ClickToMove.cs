@@ -12,6 +12,7 @@ public class ClickToMove : MonoBehaviour
     private float currentLon;
     public float moveSpeed;
     public GameObject playerLaser;
+    private GameObject shotOne;
     private Vector3 laserTarget;
 
     // Use this for initialization
@@ -75,13 +76,16 @@ public class ClickToMove : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             laserTarget = hit.point;
-            playerLaser = Instantiate(playerLaser, new Vector3(playerShip.position.x, playerShip.position.y, playerShip.position.z + 1), playerShip.rotation);
-            playerLaser.transform.LookAt(laserTarget);
+            shotOne = Instantiate(playerLaser, new Vector3(playerShip.position.x, playerShip.position.y, playerShip.position.z + 1), playerShip.rotation);
+
 
         }
         if (laserTarget != Vector3.zero)
         {
-            playerLaser.transform.position = Vector3.Lerp(playerLaser.transform.position, new Vector3(laserTarget.x, laserTarget.y, laserTarget.z + 0.6f), Time.deltaTime * 5);
+            if (shotOne != null)
+            {
+                shotOne.transform.position = Vector3.Slerp(shotOne.transform.position, new Vector3(laserTarget.x, laserTarget.y, laserTarget.z + 1), Time.deltaTime * 5);
+            }
         }
     }
 

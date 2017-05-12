@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyOnColliision : MonoBehaviour {
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.ToString());
