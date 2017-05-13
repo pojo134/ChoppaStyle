@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
+# Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChoppaStyle.Plugins", "ChoppaStyle.Plugins.csproj", "{69581F30-9CAB-6E23-082B-1D2F1C553F24}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChoppaStyle", "ChoppaStyle.csproj", "{6B501F59-80FE-A59D-D93A-50FE55CB00A3}"

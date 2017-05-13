@@ -75,9 +75,11 @@ public class ClickToMove : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            laserTarget = hit.point;
-            shotOne = Instantiate(playerLaser, new Vector3(playerShip.position.x, playerShip.position.y, playerShip.position.z + 1), playerShip.rotation);
-
+            if (shotOne == null)
+            {
+                laserTarget = hit.point;
+                shotOne = Instantiate(playerLaser, new Vector3(playerShip.position.x, playerShip.position.y, playerShip.position.z + 1), playerShip.rotation);
+            }
 
         }
         if (laserTarget != Vector3.zero)
@@ -87,6 +89,12 @@ public class ClickToMove : MonoBehaviour
                 shotOne.transform.position = Vector3.Slerp(shotOne.transform.position, new Vector3(laserTarget.x, laserTarget.y, laserTarget.z + 1), Time.deltaTime * 5);
             }
         }
+    }
+
+    public void Exit()
+    {
+        Debug.Log("Quit");
+        Application.Quit();
     }
 
 }
