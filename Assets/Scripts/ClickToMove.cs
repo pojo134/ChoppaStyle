@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System;
 
 public class ClickToMove : MonoBehaviour
 {
@@ -90,6 +90,7 @@ public class ClickToMove : MonoBehaviour
             }
         }
     }
+
 
     public void Exit()
     {
