@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 
 public class ClickToMove : MonoBehaviour
 {
@@ -14,11 +15,27 @@ public class ClickToMove : MonoBehaviour
     public GameObject playerLaser;
     private GameObject shotOne;
     private Vector3 laserTarget;
+    public GameObject cow, building;
+
 
     // Use this for initialization
     void Awake()
     {
+        for (int i = 0; i < 25; i++)
+        {
+            Vector3 cowPoint = UnityEngine.Random.onUnitSphere * 60;
+            Vector3 buildingPoint = UnityEngine.Random.onUnitSphere * 60;
+            GameObject cowGO = Instantiate(cow, cowPoint, Quaternion.identity, this.transform);
+            GameObject buildingGO = Instantiate(building, buildingPoint, Quaternion.identity, this.transform);
+            cowGO.transform.LookAt(Vector3.zero);
+            buildingGO.transform.LookAt(Vector3.zero);
+            buildingGO.transform.Rotate(-90, 0, 0);
+        }
 
+    }
+    private void Start()
+    {
+        
     }
 
     // Update is called once per frame

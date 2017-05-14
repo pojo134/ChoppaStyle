@@ -96,6 +96,7 @@
     <Compile Include="Assets\Scripts\MoveGrass.cs" />
     <Compile Include="Assets\Scripts\MoveSun.cs" />
     <Compile Include="Assets\Scripts\PlayerShooting.cs" />
+    <Compile Include="Assets\Scripts\ScoreUpdater.cs" />
     <Compile Include="Assets\Scripts\SkyboxCamera.cs" />
     <Compile Include="Assets\Scripts\tileMap.cs" />
   </ItemGroup>

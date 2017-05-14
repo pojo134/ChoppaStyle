@@ -19,7 +19,7 @@ public class DestroyOnColliision : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
+        //Debug.Log(collision.gameObject.name);
         Destroy(gameObject);
     }
 
