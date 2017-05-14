@@ -24,7 +24,6 @@ public class ScoreUpdater : MonoBehaviour {
     {
         buildingsDestroyedCount += b;
         buildingsDestroyedText.text = "BuildingsDestroyed: " + buildingsDestroyedCount;
-        Debug.Log("UpdateBuildingsDestroyed");
 
     }
 

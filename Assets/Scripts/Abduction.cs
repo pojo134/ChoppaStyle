@@ -26,7 +26,7 @@ public class Abduction : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
     {
         abductSpeed = 0;
-        if (collider.transform.tag == "Enemy")
+        if (collider.transform.tag == "Enemy" && collider.gameObject.name.Contains("RedLaser") == false)
         {
             ar.enabled = true;
             ps.Play();
@@ -36,7 +36,7 @@ public class Abduction : MonoBehaviour
     private void OnTriggerStay(Collider collider)
     {
         abductSpeed += Time.deltaTime;
-        if (abductSpeed >= 2)
+        if (abductSpeed >= 2 && collider.transform.tag == "Enemy" && collider.gameObject.name.Contains("RedLaser") == false)
         {
             Destroy(collider.gameObject);
             scoreBoard.GetComponent<ScoreUpdater>().UpdateSamples(1);

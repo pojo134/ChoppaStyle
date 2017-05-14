@@ -19,7 +19,7 @@ public class Building : MonoBehaviour
         if (buildingHP <= 0)
         {
             scoreBoard.GetComponent<ScoreUpdater>().UpdateBuildingsDestroyed(1);
-            Debug.Log("Exploded");
+            //Debug.Log("Exploded");
             Instantiate<ParticleSystem>(explode, transform.position, transform.rotation);
             Destroy(gameObject);
 

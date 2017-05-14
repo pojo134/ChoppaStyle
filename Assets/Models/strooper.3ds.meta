@@ -1,0 +1,569 @@
+fileFormatVersion: 2
+guid: b3918fc7b3551324cb99d166955ed8ee
+timeCreated: 1494740368
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: abdomen_pl
+    100002: arse plate
+    100004: back plate
+    100006: belt
+    100008: belt_pack0
+    100010: belt_pack_
+    100012: bicep_L
+    100014: bicep_R
+    100016: Bip01
+    100018: Bip01 Foot
+    100020: Bip01 Head
+    100022: Bip01 L 10
+    100024: Bip01 L 11
+    100026: Bip01 L 12
+    100028: Bip01 L 13
+    100030: Bip01 L 14
+    100032: Bip01 L Ca
+    100034: Bip01 L Cl
+    100036: Bip01 L F0
+    100038: Bip01 L F1
+    100040: Bip01 L F2
+    100042: Bip01 L F3
+    100044: Bip01 L F4
+    100046: Bip01 L F5
+    100048: Bip01 L F6
+    100050: Bip01 L F7
+    100052: Bip01 L F8
+    100054: Bip01 L F9
+    100056: Bip01 L Fi
+    100058: Bip01 L Fo
+    100060: Bip01 L Ha
+    100062: Bip01 L T0
+    100064: Bip01 L T1
+    100066: Bip01 L Th
+    100068: Bip01 L To
+    100070: Bip01 L Up
+    100072: Bip01 Neck
+    100074: Bip01 Pelv
+    100076: Bip01 R 10
+    100078: Bip01 R 11
+    100080: Bip01 R 12
+    100082: Bip01 R 13
+    100084: Bip01 R 14
+    100086: Bip01 R Ca
+    100088: Bip01 R Cl
+    100090: Bip01 R F0
+    100092: Bip01 R F1
+    100094: Bip01 R F2
+    100096: Bip01 R F3
+    100098: Bip01 R F4
+    100100: Bip01 R F5
+    100102: Bip01 R F6
+    100104: Bip01 R F7
+    100106: Bip01 R F8
+    100108: Bip01 R F9
+    100110: Bip01 R Fi
+    100112: Bip01 R Fo
+    100114: Bip01 R Ha
+    100116: Bip01 R T0
+    100118: Bip01 R T1
+    100120: Bip01 R Th
+    100122: Bip01 R To
+    100124: Bip01 R Up
+    100126: Bip01 Spi0
+    100128: Bip01 Spi1
+    100130: Bip01 Spi2
+    100132: Bip01 Spin
+    100134: Blaster
+    100136: body sock
+    100138: Camera01
+    100140: Camera01.target
+    100142: chest plat
+    100144: cod piece
+    100146: Dummy01
+    100148: Dummy02
+    100150: Dummy03
+    100152: Dummy04
+    100154: Dummy05
+    100156: Dummy06
+    100158: Dummy07
+    100160: Dummy08
+    100162: Dummy09
+    100164: Dummy10
+    100166: Dummy11
+    100168: Dummy12
+    100170: Dummy13
+    100172: foot_L
+    100174: foot_R
+    100176: forearm_L
+    100178: forearm_R
+    100180: GeoSphere0
+    100182: hand_armo0
+    100184: hand_armou
+    100186: Helmet
+    100188: knee_pad_R
+    100190: lower_back
+    100192: Omni01
+    100194: Omni02
+    100196: Omni03
+    100198: Omni04
+    100200: Omni05
+    100202: shin_L
+    100204: shin_R
+    100206: shoulder_0
+    100208: shoulder_L
+    100210: shoulder_R
+    100212: shoulder_s
+    100214: //RootNode
+    100216: thermal_de
+    100218: thigh_L
+    100220: thigh_R
+    400000: abdomen_pl
+    400002: arse plate
+    400004: back plate
+    400006: belt
+    400008: belt_pack0
+    400010: belt_pack_
+    400012: bicep_L
+    400014: bicep_R
+    400016: Bip01
+    400018: Bip01 Foot
+    400020: Bip01 Head
+    400022: Bip01 L 10
+    400024: Bip01 L 11
+    400026: Bip01 L 12
+    400028: Bip01 L 13
+    400030: Bip01 L 14
+    400032: Bip01 L Ca
+    400034: Bip01 L Cl
+    400036: Bip01 L F0
+    400038: Bip01 L F1
+    400040: Bip01 L F2
+    400042: Bip01 L F3
+    400044: Bip01 L F4
+    400046: Bip01 L F5
+    400048: Bip01 L F6
+    400050: Bip01 L F7
+    400052: Bip01 L F8
+    400054: Bip01 L F9
+    400056: Bip01 L Fi
+    400058: Bip01 L Fo
+    400060: Bip01 L Ha
+    400062: Bip01 L T0
+    400064: Bip01 L T1
+    400066: Bip01 L Th
+    400068: Bip01 L To
+    400070: Bip01 L Up
+    400072: Bip01 Neck
+    400074: Bip01 Pelv
+    400076: Bip01 R 10
+    400078: Bip01 R 11
+    400080: Bip01 R 12
+    400082: Bip01 R 13
+    400084: Bip01 R 14
+    400086: Bip01 R Ca
+    400088: Bip01 R Cl
+    400090: Bip01 R F0
+    400092: Bip01 R F1
+    400094: Bip01 R F2
+    400096: Bip01 R F3
+    400098: Bip01 R F4
+    400100: Bip01 R F5
+    400102: Bip01 R F6
+    400104: Bip01 R F7
+    400106: Bip01 R F8
+    400108: Bip01 R F9
+    400110: Bip01 R Fi
+    400112: Bip01 R Fo
+    400114: Bip01 R Ha
+    400116: Bip01 R T0
+    400118: Bip01 R T1
+    400120: Bip01 R Th
+    400122: Bip01 R To
+    400124: Bip01 R Up
+    400126: Bip01 Spi0
+    400128: Bip01 Spi1
+    400130: Bip01 Spi2
+    400132: Bip01 Spin
+    400134: Blaster
+    400136: body sock
+    400138: Camera01
+    400140: Camera01.target
+    400142: chest plat
+    400144: cod piece
+    400146: Dummy01
+    400148: Dummy02
+    400150: Dummy03
+    400152: Dummy04
+    400154: Dummy05
+    400156: Dummy06
+    400158: Dummy07
+    400160: Dummy08
+    400162: Dummy09
+    400164: Dummy10
+    400166: Dummy11
+    400168: Dummy12
+    400170: Dummy13
+    400172: foot_L
+    400174: foot_R
+    400176: forearm_L
+    400178: forearm_R
+    400180: GeoSphere0
+    400182: hand_armo0
+    400184: hand_armou
+    400186: Helmet
+    400188: knee_pad_R
+    400190: lower_back
+    400192: Omni01
+    400194: Omni02
+    400196: Omni03
+    400198: Omni04
+    400200: Omni05
+    400202: shin_L
+    400204: shin_R
+    400206: shoulder_0
+    400208: shoulder_L
+    400210: shoulder_R
+    400212: shoulder_s
+    400214: //RootNode
+    400216: thermal_de
+    400218: thigh_L
+    400220: thigh_R
+    2300000: abdomen_pl
+    2300002: arse plate
+    2300004: back plate
+    2300006: belt
+    2300008: belt_pack0
+    2300010: belt_pack_
+    2300012: bicep_L
+    2300014: bicep_R
+    2300016: Bip01
+    2300018: Bip01 Foot
+    2300020: Bip01 Head
+    2300022: Bip01 L 10
+    2300024: Bip01 L 11
+    2300026: Bip01 L 12
+    2300028: Bip01 L 13
+    2300030: Bip01 L 14
+    2300032: Bip01 L Ca
+    2300034: Bip01 L Cl
+    2300036: Bip01 L F0
+    2300038: Bip01 L F1
+    2300040: Bip01 L F2
+    2300042: Bip01 L F3
+    2300044: Bip01 L F4
+    2300046: Bip01 L F5
+    2300048: Bip01 L F6
+    2300050: Bip01 L F7
+    2300052: Bip01 L F8
+    2300054: Bip01 L F9
+    2300056: Bip01 L Fi
+    2300058: Bip01 L Fo
+    2300060: Bip01 L Ha
+    2300062: Bip01 L T0
+    2300064: Bip01 L T1
+    2300066: Bip01 L Th
+    2300068: Bip01 L To
+    2300070: Bip01 L Up
+    2300072: Bip01 Neck
+    2300074: Bip01 Pelv
+    2300076: Bip01 R 10
+    2300078: Bip01 R 11
+    2300080: Bip01 R 12
+    2300082: Bip01 R 13
+    2300084: Bip01 R 14
+    2300086: Bip01 R Ca
+    2300088: Bip01 R Cl
+    2300090: Bip01 R F0
+    2300092: Bip01 R F1
+    2300094: Bip01 R F2
+    2300096: Bip01 R F3
+    2300098: Bip01 R F4
+    2300100: Bip01 R F5
+    2300102: Bip01 R F6
+    2300104: Bip01 R F7
+    2300106: Bip01 R F8
+    2300108: Bip01 R F9
+    2300110: Bip01 R Fi
+    2300112: Bip01 R Fo
+    2300114: Bip01 R Ha
+    2300116: Bip01 R T0
+    2300118: Bip01 R T1
+    2300120: Bip01 R Th
+    2300122: Bip01 R To
+    2300124: Bip01 R Up
+    2300126: Bip01 Spi0
+    2300128: Bip01 Spi1
+    2300130: Bip01 Spi2
+    2300132: Bip01 Spin
+    2300134: Blaster
+    2300136: body sock
+    2300138: chest plat
+    2300140: cod piece
+    2300142: foot_L
+    2300144: foot_R
+    2300146: forearm_L
+    2300148: forearm_R
+    2300150: GeoSphere0
+    2300152: hand_armo0
+    2300154: hand_armou
+    2300156: Helmet
+    2300158: knee_pad_R
+    2300160: lower_back
+    2300162: shin_L
+    2300164: shin_R
+    2300166: shoulder_0
+    2300168: shoulder_L
+    2300170: shoulder_R
+    2300172: shoulder_s
+    2300174: thermal_de
+    2300176: thigh_L
+    2300178: thigh_R
+    3300000: abdomen_pl
+    3300002: arse plate
+    3300004: back plate
+    3300006: belt
+    3300008: belt_pack0
+    3300010: belt_pack_
+    3300012: bicep_L
+    3300014: bicep_R
+    3300016: Bip01
+    3300018: Bip01 Foot
+    3300020: Bip01 Head
+    3300022: Bip01 L 10
+    3300024: Bip01 L 11
+    3300026: Bip01 L 12
+    3300028: Bip01 L 13
+    3300030: Bip01 L 14
+    3300032: Bip01 L Ca
+    3300034: Bip01 L Cl
+    3300036: Bip01 L F0
+    3300038: Bip01 L F1
+    3300040: Bip01 L F2
+    3300042: Bip01 L F3
+    3300044: Bip01 L F4
+    3300046: Bip01 L F5
+    3300048: Bip01 L F6
+    3300050: Bip01 L F7
+    3300052: Bip01 L F8
+    3300054: Bip01 L F9
+    3300056: Bip01 L Fi
+    3300058: Bip01 L Fo
+    3300060: Bip01 L Ha
+    3300062: Bip01 L T0
+    3300064: Bip01 L T1
+    3300066: Bip01 L Th
+    3300068: Bip01 L To
+    3300070: Bip01 L Up
+    3300072: Bip01 Neck
+    3300074: Bip01 Pelv
+    3300076: Bip01 R 10
+    3300078: Bip01 R 11
+    3300080: Bip01 R 12
+    3300082: Bip01 R 13
+    3300084: Bip01 R 14
+    3300086: Bip01 R Ca
+    3300088: Bip01 R Cl
+    3300090: Bip01 R F0
+    3300092: Bip01 R F1
+    3300094: Bip01 R F2
+    3300096: Bip01 R F3
+    3300098: Bip01 R F4
+    3300100: Bip01 R F5
+    3300102: Bip01 R F6
+    3300104: Bip01 R F7
+    3300106: Bip01 R F8
+    3300108: Bip01 R F9
+    3300110: Bip01 R Fi
+    3300112: Bip01 R Fo
+    3300114: Bip01 R Ha
+    3300116: Bip01 R T0
+    3300118: Bip01 R T1
+    3300120: Bip01 R Th
+    3300122: Bip01 R To
+    3300124: Bip01 R Up
+    3300126: Bip01 Spi0
+    3300128: Bip01 Spi1
+    3300130: Bip01 Spi2
+    3300132: Bip01 Spin
+    3300134: Blaster
+    3300136: body sock
+    3300138: chest plat
+    3300140: cod piece
+    3300142: foot_L
+    3300144: foot_R
+    3300146: forearm_L
+    3300148: forearm_R
+    3300150: GeoSphere0
+    3300152: hand_armo0
+    3300154: hand_armou
+    3300156: Helmet
+    3300158: knee_pad_R
+    3300160: lower_back
+    3300162: shin_L
+    3300164: shin_R
+    3300166: shoulder_0
+    3300168: shoulder_L
+    3300170: shoulder_R
+    3300172: shoulder_s
+    3300174: thermal_de
+    3300176: thigh_L
+    3300178: thigh_R
+    4300000: body sock
+    4300002: Bip01
+    4300004: Bip01 Foot
+    4300006: Bip01 Pelv
+    4300008: Bip01 Spin
+    4300010: Bip01 Spi0
+    4300012: Bip01 Spi1
+    4300014: Bip01 Spi2
+    4300016: Bip01 Neck
+    4300018: Bip01 Head
+    4300020: Helmet
+    4300022: Bip01 R Cl
+    4300024: Bip01 R Up
+    4300026: Bip01 R Fo
+    4300028: Bip01 R Ha
+    4300030: Bip01 R Fi
+    4300032: Bip01 R F0
+    4300034: Bip01 R F1
+    4300036: Bip01 R F2
+    4300038: Bip01 R F3
+    4300040: Bip01 R F4
+    4300042: Bip01 R F5
+    4300044: Bip01 R F6
+    4300046: Bip01 R F7
+    4300048: Bip01 R F8
+    4300050: Bip01 R F9
+    4300052: Bip01 R 10
+    4300054: Bip01 R 11
+    4300056: Bip01 R 12
+    4300058: Bip01 R 13
+    4300060: hand_armou
+    4300062: Blaster
+    4300064: forearm_R
+    4300066: shoulder_R
+    4300068: bicep_R
+    4300070: Bip01 L Cl
+    4300072: Bip01 L Up
+    4300074: Bip01 L Fo
+    4300076: Bip01 L Ha
+    4300078: Bip01 L Fi
+    4300080: Bip01 L F0
+    4300082: Bip01 L F1
+    4300084: Bip01 L F2
+    4300086: Bip01 L F3
+    4300088: Bip01 L F4
+    4300090: Bip01 L F5
+    4300092: Bip01 L F6
+    4300094: Bip01 L F7
+    4300096: Bip01 L F8
+    4300098: Bip01 L F9
+    4300100: Bip01 L 10
+    4300102: Bip01 L 11
+    4300104: Bip01 L 12
+    4300106: Bip01 L 13
+    4300108: hand_armo0
+    4300110: forearm_L
+    4300112: shoulder_L
+    4300114: bicep_L
+    4300116: chest plat
+    4300118: back plate
+    4300120: shoulder_s
+    4300122: shoulder_0
+    4300124: Bip01 L Th
+    4300126: Bip01 L Ca
+    4300128: Bip01 L 14
+    4300130: Bip01 L To
+    4300132: Bip01 L T0
+    4300134: Bip01 L T1
+    4300136: foot_L
+    4300138: shin_L
+    4300140: thigh_L
+    4300142: Bip01 R Th
+    4300144: Bip01 R Ca
+    4300146: Bip01 R 14
+    4300148: Bip01 R To
+    4300150: Bip01 R T0
+    4300152: Bip01 R T1
+    4300154: foot_R
+    4300156: shin_R
+    4300158: thigh_R
+    4300160: knee_pad_R
+    4300162: abdomen_pl
+    4300164: lower_back
+    4300166: belt
+    4300168: cod piece
+    4300170: arse plate
+    4300172: belt_pack_
+    4300174: belt_pack0
+    4300176: thermal_de
+    4300178: GeoSphere0
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

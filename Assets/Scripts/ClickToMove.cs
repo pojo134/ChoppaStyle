@@ -15,7 +15,7 @@ public class ClickToMove : MonoBehaviour
     public GameObject playerLaser;
     private GameObject shotOne;
     private Vector3 laserTarget;
-    public GameObject cow, building;
+    public GameObject cow, building, soldier;
 
 
     // Use this for initialization
@@ -25,11 +25,15 @@ public class ClickToMove : MonoBehaviour
         {
             Vector3 cowPoint = UnityEngine.Random.onUnitSphere * 60;
             Vector3 buildingPoint = UnityEngine.Random.onUnitSphere * 60;
+            Vector3 soldierPoint = UnityEngine.Random.onUnitSphere * 60;
             GameObject cowGO = Instantiate(cow, cowPoint, Quaternion.identity, this.transform);
             GameObject buildingGO = Instantiate(building, buildingPoint, Quaternion.identity, this.transform);
+            GameObject soldierGO = Instantiate(soldier, soldierPoint, Quaternion.identity, this.transform);
             cowGO.transform.LookAt(Vector3.zero);
             buildingGO.transform.LookAt(Vector3.zero);
             buildingGO.transform.Rotate(-90, 0, 0);
+            soldierGO.transform.LookAt(Vector3.zero);
+            soldierGO.transform.Rotate(-90, 0, 0);
         }
 
     }
@@ -103,7 +107,7 @@ public class ClickToMove : MonoBehaviour
         {
             if (shotOne != null)
             {
-                shotOne.transform.position = Vector3.Slerp(shotOne.transform.position, new Vector3(laserTarget.x, laserTarget.y, laserTarget.z + 1), Time.deltaTime * 5);
+                shotOne.transform.position = Vector3.Slerp(shotOne.transform.position, new Vector3(laserTarget.x, laserTarget.y, laserTarget.z), Time.deltaTime * 5);
             }
         }
     }
