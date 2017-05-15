@@ -15,7 +15,11 @@ public class Detection : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            soldier.GetComponent<Soldier>().Fire();
+            Debug.Log("Entered Detection Zone");
+
+            soldier.GetComponent<Soldier>().Fire(other);
+            soldier.GetComponent<Soldier>().Detected(true);
+
 
         }
     }
@@ -24,10 +28,23 @@ public class Detection : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            soldier.GetComponent<Soldier>().Fire();
+            Debug.Log("Still in Detection Zone");
+
+            soldier.GetComponent<Soldier>().Fire(other);
+            //soldier.GetComponent<Soldier>().Detected(true);
 
         }
 
     }
-    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            Debug.Log("Left Detection Zone");
+            soldier.GetComponent<Soldier>().Detected(false);
+
+        }
+
+    }
+
 }
