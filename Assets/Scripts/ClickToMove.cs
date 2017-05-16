@@ -21,7 +21,7 @@ public class ClickToMove : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        for (int i = 0; i < 25; i++)
+        for (int i = 0; i < 20; i++)
         {
             Vector3 cowPoint = UnityEngine.Random.onUnitSphere * 60;
             Vector3 buildingPoint = UnityEngine.Random.onUnitSphere * 60;
@@ -68,6 +68,7 @@ public class ClickToMove : MonoBehaviour
             float latitude = Mathf.Asin(localPos.normalized.y) * Mathf.Rad2Deg;
 
             cursor.position = hit.point;
+            cursor.transform.LookAt(Vector3.zero);
             if (Input.GetMouseButtonDown(0))
             {
                 targetLat = latitude;
@@ -90,6 +91,7 @@ public class ClickToMove : MonoBehaviour
         if (hit.point != Vector3.zero)
         {
             playerShip.transform.rotation = Quaternion.LookRotation(hit.point, Vector3.back);
+            playerShip.transform.Rotate(new Vector3(90, 0, 0));
         }
 
         //Fire laser to cursor location
@@ -99,7 +101,7 @@ public class ClickToMove : MonoBehaviour
             if (shotOne == null)
             {
                 laserTarget = hit.point;
-                shotOne = Instantiate(playerLaser, new Vector3(playerShip.position.x, playerShip.position.y, playerShip.position.z + 1), playerShip.rotation);
+                shotOne = Instantiate(playerLaser, new Vector3(playerShip.position.x, playerShip.position.y, playerShip.position.z + 2), playerShip.rotation);
             }
 
         }
