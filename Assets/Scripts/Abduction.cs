@@ -40,6 +40,7 @@ public class Abduction : MonoBehaviour
         {
             Destroy(collider.gameObject);
             scoreBoard.GetComponent<ScoreUpdater>().UpdateSamples(1);
+            scoreBoard.GetComponent<ScoreUpdater>().NotifyUser("Sample Collected");
 
             ar.enabled = false;
             ps.Stop();

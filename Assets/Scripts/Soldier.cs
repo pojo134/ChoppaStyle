@@ -13,7 +13,7 @@ public class Soldier : MonoBehaviour
     public GameObject enemyLaser;
     public GameObject playerShip;
     public GameObject shotOne, shotTwo, shotThree;
-    private Vector3 laserTarget;
+    private Vector3 enemyLaserTarget;
     private bool detected;
     public float rotateSpeed;
     private float fireTimer;
@@ -38,6 +38,7 @@ public class Soldier : MonoBehaviour
         if (soldierHP <= 0)
         {
             scoreBoard.GetComponent<ScoreUpdater>().UpdateEvaporations(1);
+            scoreBoard.GetComponent<ScoreUpdater>().NotifyUser("Enemy Evaporated!");
             Destroy(gameObject);
         }
         if (detected)
@@ -65,13 +66,13 @@ public class Soldier : MonoBehaviour
     {
         if (shotOne == null)
         {
-            laserTarget = playerShip.transform.position;
+            enemyLaserTarget = playerShip.transform.position;
             shotOne = Instantiate(enemyLaser, new Vector3(transform.position.x, transform.position.y, transform.position.z - 3), Quaternion.identity);
             shotOne.transform.Rotate(-90, 0, 0);
         }
         else
         {
-            shotOne.transform.position = Vector3.Slerp(shotOne.transform.position, laserTarget, Time.deltaTime * 5);
+            shotOne.transform.position = Vector3.Slerp(shotOne.transform.position, enemyLaserTarget, Time.deltaTime * 5);
 
         }
     }
@@ -79,7 +80,7 @@ public class Soldier : MonoBehaviour
     {
         if (shotOne == null)
         {
-            laserTarget = other.transform.position;
+            enemyLaserTarget = other.transform.position;
             shotOne = Instantiate(enemyLaser, new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, transform.position.z - 2), transform.rotation);
             //shotOne.transform.LookAt(other.transform);
             //shotOne.transform.rotation *= Quaternion.Euler(0, 0, 90f);
@@ -101,11 +102,16 @@ public class Soldier : MonoBehaviour
         */
         else
         {
-            shotOne.transform.position = Vector3.LerpUnclamped(shotOne.transform.position, laserTarget, Time.deltaTime * 5); 
+            shotOne.transform.position = Vector3.LerpUnclamped(shotOne.transform.position, enemyLaserTarget, Time.deltaTime * 5); 
             //if (shotTwo != null) shotTwo.transform.position = Vector3.LerpUnclamped(shotTwo.transform.position, laserTarget, Time.deltaTime * 5); 
             //if (shotThree != null) shotThree.transform.position = Vector3.LerpUnclamped(shotThree.transform.position, laserTarget, Time.deltaTime * 5); 
 
         }
 
+    }
+    public bool TakeDamage(int d)
+    {
+        soldierHP -= d;
+        return true;
     }
 }

@@ -19,7 +19,7 @@ public class Building : MonoBehaviour
         if (buildingHP <= 0)
         {
             scoreBoard.GetComponent<ScoreUpdater>().UpdateBuildingsDestroyed(1);
-            //Debug.Log("Exploded");
+            scoreBoard.GetComponent<ScoreUpdater>().NotifyUser("Building Destroyed!");
             Instantiate<ParticleSystem>(explode, transform.position, transform.rotation);
             Destroy(gameObject);
 
@@ -31,5 +31,11 @@ public class Building : MonoBehaviour
     {
         //Debug.Log(collision.gameObject.name);
         buildingHP--;
+    }
+
+    public bool TakeDamage(int d)
+    {
+        buildingHP -= d;
+        return true;
     }
 }

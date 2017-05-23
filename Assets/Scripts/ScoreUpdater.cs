@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class ScoreUpdater : MonoBehaviour {
     private int samplesCount = 0, evaporationCount = 0, buildingsDestroyedCount = 0;
-    public Text samplesText, evaporationText, buildingsDestroyedText;
+    public Text samplesText, evaporationText, buildingsDestroyedText, laserEnabledText;
+    public Transform sphere;
+    private float notificationCounter = 0;
 
     // Use this for initialization
     void Start () {
@@ -17,7 +19,22 @@ public class ScoreUpdater : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(samplesCount >= 3)
+        {
+            sphere.GetComponent<ClickToMove>().BonusMode();
+            UpdateSamples(-3);
+        }
+        if (notificationCounter > 50)
+        {
+            notificationCounter = 0;
+        }
+        notificationCounter += Time.deltaTime;
+
+        if (notificationCounter > 2)
+        {
+            ClearUserNotify();
+        }
+
 	}
 
     public void UpdateBuildingsDestroyed(int b)
@@ -37,5 +54,17 @@ public class ScoreUpdater : MonoBehaviour {
     {
         samplesCount += s;
         samplesText.text = "Samples: " + samplesCount;
+    }
+
+    public void NotifyUser(string s)
+    {
+        laserEnabledText.text = s;
+        laserEnabledText.enabled = true;
+        notificationCounter = 0;
+    }
+    public void ClearUserNotify()
+    {
+        laserEnabledText.text = null;
+        laserEnabledText.enabled = false;
     }
 }

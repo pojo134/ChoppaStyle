@@ -7,6 +7,7 @@ public class ClickToMove : MonoBehaviour
 {
 
     public Transform playerShip, cursor;
+    public LineRenderer laserLine;
     private float targetLat;
     private float targetLon;
     private float currentLat;
@@ -16,6 +17,10 @@ public class ClickToMove : MonoBehaviour
     private GameObject shotOne;
     private Vector3 laserTarget;
     public GameObject cow, building, soldier;
+    public ParticleSystem laserBurn;
+    public bool superLaserEnabled = true;
+    public float bonusLength = 10f, bonusTimer = 0;
+    public GameObject scoreBoard;
 
 
     // Use this for initialization
@@ -24,7 +29,7 @@ public class ClickToMove : MonoBehaviour
         for (int i = 0; i < 20; i++)
         {
             Vector3 cowPoint = UnityEngine.Random.onUnitSphere * 60;
-            Vector3 buildingPoint = UnityEngine.Random.onUnitSphere * 60;
+            Vector3 buildingPoint = UnityEngine.Random.onUnitSphere * 61.1f;
             Vector3 soldierPoint = UnityEngine.Random.onUnitSphere * 60;
             GameObject cowGO = Instantiate(cow, cowPoint, Quaternion.identity, this.transform);
             GameObject buildingGO = Instantiate(building, buildingPoint, Quaternion.identity, this.transform);
@@ -39,7 +44,12 @@ public class ClickToMove : MonoBehaviour
     }
     private void Start()
     {
-        
+        laserLine = playerShip.GetComponentInParent<LineRenderer>();
+        laserLine.startWidth = 0.2f;
+        laserLine.enabled = false;
+
+        scoreBoard = GameObject.FindGameObjectWithTag("Canvas");
+
     }
 
     // Update is called once per frame
@@ -95,25 +105,96 @@ public class ClickToMove : MonoBehaviour
         }
 
         //Fire laser to cursor location
-
-        if (Input.GetMouseButtonDown(1))
+        if (superLaserEnabled)
         {
-            if (shotOne == null)
-            {
-                laserTarget = hit.point;
-                shotOne = Instantiate(playerLaser, new Vector3(playerShip.position.x, playerShip.position.y, playerShip.position.z + 2), playerShip.rotation);
-            }
+            scoreBoard.GetComponent<ScoreUpdater>().NotifyUser("Super Laser Enabled! " + Math.Abs(bonusTimer).ToString("F2"));
 
-        }
-        if (laserTarget != Vector3.zero)
-        {
             if (shotOne != null)
             {
-                shotOne.transform.position = Vector3.Slerp(shotOne.transform.position, new Vector3(laserTarget.x, laserTarget.y, laserTarget.z), Time.deltaTime * 5);
+                shotOne.SetActive(false);
+
+            }
+            laserLine.SetPosition(0, playerShip.position);
+            laserLine.SetPosition(1, cursor.position);
+            if (Input.GetMouseButton(1))
+            {
+                RaycastHit laserHit;
+
+
+                laserBurn.Play();
+                laserLine.enabled = true;
+
+                var heading = cursor.position - playerShip.position;
+                //heading.y = 0;  // This is the overground heading.
+                if (Physics.Raycast(playerShip.transform.position, heading, out laserHit))
+                {
+                    if (laserHit.transform != null)
+                    {
+
+
+                        if (laserHit.transform.tag == "Enemy")
+                        {
+                            laserHit.transform.GetComponent<Soldier>().TakeDamage(1);
+                        }
+                        if (laserHit.transform.tag == "Building")
+                        {
+                            laserHit.transform.GetComponent<Building>().TakeDamage(1);
+                        }
+                    }
+                }
+
+                /*
+               
+                 */
+            }
+            if (!Input.GetMouseButton(1))
+            {
+                laserLine.enabled = false;
+                laserBurn.Stop();
             }
         }
+        if(!superLaserEnabled)
+        {
+            
+
+            laserLine.enabled = false;
+
+            if (Input.GetMouseButton(1))
+            {
+                if (shotOne == null)
+                {
+                    laserTarget = hit.point;
+                    shotOne = Instantiate(playerLaser, new Vector3(playerShip.position.x, playerShip.position.y, playerShip.position.z + 2), playerShip.rotation);
+
+                }
+
+            }
+            if (laserTarget != Vector3.zero)
+            {
+                if (shotOne != null)
+                {
+                    shotOne.transform.position = Vector3.Slerp(shotOne.transform.position, new Vector3(laserTarget.x, laserTarget.y, laserTarget.z), Time.deltaTime * 5);
+                }
+            }
+        }
+        if (bonusTimer >= 100)
+        {
+            bonusTimer = 0;
+        }
+        bonusTimer += Time.deltaTime;
+        if (bonusTimer <= 0)
+        {
+            superLaserEnabled = true;
+
+        }
+        else superLaserEnabled = false;
     }
 
+    public void BonusMode()
+    {
+        bonusTimer = -bonusLength;
+
+    }
 
     public void Exit()
     {
