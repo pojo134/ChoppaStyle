@@ -19,14 +19,14 @@ public class ClickToMove : MonoBehaviour
     public GameObject cow, building, soldier;
     public ParticleSystem laserBurn;
     public bool superLaserEnabled = true;
-    public float bonusLength = 10f, bonusTimer = 0;
+    public float bonusLength = 5f, bonusTimer = 0;
     public GameObject scoreBoard;
 
 
     // Use this for initialization
     void Awake()
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 10; i++)
         {
             Vector3 cowPoint = UnityEngine.Random.onUnitSphere * 60;
             Vector3 buildingPoint = UnityEngine.Random.onUnitSphere * 61.1f;
@@ -130,22 +130,26 @@ public class ClickToMove : MonoBehaviour
                 {
                     if (laserHit.transform != null)
                     {
-
-
                         if (laserHit.transform.tag == "Enemy")
                         {
                             laserHit.transform.GetComponent<Soldier>().TakeDamage(1);
+                        }
+                        if (laserHit.transform.tag == "Cow")
+                        {
+                            laserHit.transform.GetComponent<Cow>().TakeDamage(1);
                         }
                         if (laserHit.transform.tag == "Building")
                         {
                             laserHit.transform.GetComponent<Building>().TakeDamage(1);
                         }
                     }
+                    if (laserHit.transform.tag == "Ground")
+                    {
+                        Debug.Log("Hit Ground");
+                    }
                 }
 
-                /*
-               
-                 */
+
             }
             if (!Input.GetMouseButton(1))
             {
@@ -153,9 +157,9 @@ public class ClickToMove : MonoBehaviour
                 laserBurn.Stop();
             }
         }
-        if(!superLaserEnabled)
+        if (!superLaserEnabled)
         {
-            
+
 
             laserLine.enabled = false;
 

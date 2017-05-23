@@ -19,7 +19,7 @@ public class ScoreUpdater : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(samplesCount >= 3)
+		if(samplesCount >= 1)
         {
             sphere.GetComponent<ClickToMove>().BonusMode();
             UpdateSamples(-3);

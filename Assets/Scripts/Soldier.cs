@@ -50,17 +50,28 @@ public class Soldier : MonoBehaviour
 
         }
 
+        if (Vector3.Distance(transform.position, playerShip.transform.position) <= range)
+        {
+            Detected(true);
+            Fire(playerShip.transform);
+        }
+        if (Vector3.Distance(transform.position, playerShip.transform.position) > range && detected)
+        {
+            Detected(false);
+        }
+
 
     }
 
 
-
+    /*   Taking damamge backwards, new method is TakeDamage()
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.name + " collided with " + name);
         if (collision.gameObject.name.Contains("BlueLaser")) { soldierHP--; }
 
     }
+    */
 
     public void Fire()
     {
@@ -69,6 +80,7 @@ public class Soldier : MonoBehaviour
             enemyLaserTarget = playerShip.transform.position;
             shotOne = Instantiate(enemyLaser, new Vector3(transform.position.x, transform.position.y, transform.position.z - 3), Quaternion.identity);
             shotOne.transform.Rotate(-90, 0, 0);
+            
         }
         else
         {
@@ -76,7 +88,7 @@ public class Soldier : MonoBehaviour
 
         }
     }
-    internal void Fire(Collider other)
+    internal void Fire(Transform other)
     {
         if (shotOne == null)
         {

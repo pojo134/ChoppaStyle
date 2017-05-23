@@ -17,7 +17,7 @@ public class Detection : MonoBehaviour {
         {
             Debug.Log("Entered Detection Zone");
 
-            soldier.GetComponent<Soldier>().Fire(other);
+            soldier.GetComponent<Soldier>().Fire(other.transform);
             soldier.GetComponent<Soldier>().Detected(true);
 
 
@@ -30,7 +30,7 @@ public class Detection : MonoBehaviour {
         {
             Debug.Log("Still in Detection Zone");
 
-            soldier.GetComponent<Soldier>().Fire(other);
+            soldier.GetComponent<Soldier>().Fire(other.transform);
             //soldier.GetComponent<Soldier>().Detected(true);
 
         }

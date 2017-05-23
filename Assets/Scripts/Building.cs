@@ -26,12 +26,13 @@ public class Building : MonoBehaviour
 
         }
     }
-
+    /*Taking damamge backwards, new method is TakeDamage()
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log(collision.gameObject.name);
         buildingHP--;
     }
+    */
 
     public bool TakeDamage(int d)
     {
