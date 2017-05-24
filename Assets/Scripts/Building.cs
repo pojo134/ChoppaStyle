@@ -20,19 +20,12 @@ public class Building : MonoBehaviour
         {
             scoreBoard.GetComponent<ScoreUpdater>().UpdateBuildingsDestroyed(1);
             scoreBoard.GetComponent<ScoreUpdater>().NotifyUser("Building Destroyed!");
-            Instantiate<ParticleSystem>(explode, transform.position, transform.rotation);
+            Instantiate<ParticleSystem>(explode, transform.position, transform.rotation,transform.parent);
             Destroy(gameObject);
 
 
         }
     }
-    /*Taking damamge backwards, new method is TakeDamage()
-    private void OnCollisionEnter(Collision collision)
-    {
-        //Debug.Log(collision.gameObject.name);
-        buildingHP--;
-    }
-    */
 
     public bool TakeDamage(int d)
     {

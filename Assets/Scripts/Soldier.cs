@@ -64,30 +64,6 @@ public class Soldier : MonoBehaviour
     }
 
 
-    /*   Taking damamge backwards, new method is TakeDamage()
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(collision.gameObject.name + " collided with " + name);
-        if (collision.gameObject.name.Contains("BlueLaser")) { soldierHP--; }
-
-    }
-    */
-
-    public void Fire()
-    {
-        if (shotOne == null)
-        {
-            enemyLaserTarget = playerShip.transform.position;
-            shotOne = Instantiate(enemyLaser, new Vector3(transform.position.x, transform.position.y, transform.position.z - 3), Quaternion.identity);
-            shotOne.transform.Rotate(-90, 0, 0);
-            
-        }
-        else
-        {
-            shotOne.transform.position = Vector3.Slerp(shotOne.transform.position, enemyLaserTarget, Time.deltaTime * 5);
-
-        }
-    }
     internal void Fire(Transform other)
     {
         if (shotOne == null)

@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class ClickToMove : MonoBehaviour
 {
 
-    public Transform playerShip, cursor;
-    public LineRenderer laserLine;
+    public Transform playerShip, cursor, mothershipOne, mothershipTwo, mothershipThree;
+    public LineRenderer laserLine, buildingLaserLineOne, buildingLaserLineTwo, buildingLaserLineThree;
     private float targetLat;
     private float targetLon;
     private float currentLat;
@@ -21,6 +21,9 @@ public class ClickToMove : MonoBehaviour
     public bool superLaserEnabled = true;
     public float bonusLength = 5f, bonusTimer = 0;
     public GameObject scoreBoard;
+    public float buildingBonusTimer;
+    private bool buildingBonusEnabled;
+
 
 
     // Use this for initialization
@@ -48,13 +51,26 @@ public class ClickToMove : MonoBehaviour
         laserLine.startWidth = 0.2f;
         laserLine.enabled = false;
 
-        scoreBoard = GameObject.FindGameObjectWithTag("Canvas");
+        buildingLaserLineOne = mothershipOne.GetComponent<LineRenderer>();
+        buildingLaserLineOne.startWidth = 0.8f;
+        buildingLaserLineOne.enabled = false;
 
+        buildingLaserLineTwo = mothershipTwo.GetComponent<LineRenderer>();
+        buildingLaserLineTwo.startWidth = 0.8f;
+        buildingLaserLineTwo.enabled = false;
+
+        buildingLaserLineThree = mothershipThree.GetComponent<LineRenderer>();
+        buildingLaserLineThree.startWidth = 0.8f;
+        buildingLaserLineThree.enabled = false;
+
+        scoreBoard = GameObject.FindGameObjectWithTag("Canvas");
+        buildingBonusEnabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        #region Crazy Math to get cursor location on globe
         // perform raycast to get a point on the sphere
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -96,6 +112,7 @@ public class ClickToMove : MonoBehaviour
             Quaternion.AngleAxis(-currentLat, Vector3.right) *
             Quaternion.AngleAxis(currentLon, Vector3.up);
 
+        #endregion
 
         //Move player ship to face cursor
         if (hit.point != Vector3.zero)
@@ -105,6 +122,8 @@ public class ClickToMove : MonoBehaviour
         }
 
         //Fire laser to cursor location
+
+        #region Super Laser Enabled
         if (superLaserEnabled)
         {
             scoreBoard.GetComponent<ScoreUpdater>().NotifyUser("Super Laser Enabled! " + Math.Abs(bonusTimer).ToString("F2"));
@@ -116,6 +135,7 @@ public class ClickToMove : MonoBehaviour
             }
             laserLine.SetPosition(0, playerShip.position);
             laserLine.SetPosition(1, cursor.position);
+
             if (Input.GetMouseButton(1))
             {
                 RaycastHit laserHit;
@@ -128,40 +148,51 @@ public class ClickToMove : MonoBehaviour
                 //heading.y = 0;  // This is the overground heading.
                 if (Physics.Raycast(playerShip.transform.position, heading, out laserHit))
                 {
-                    if (laserHit.transform != null)
-                    {
-                        if (laserHit.transform.tag == "Enemy")
-                        {
-                            laserHit.transform.GetComponent<Soldier>().TakeDamage(1);
-                        }
-                        if (laserHit.transform.tag == "Cow")
-                        {
-                            laserHit.transform.GetComponent<Cow>().TakeDamage(1);
-                        }
-                        if (laserHit.transform.tag == "Building")
-                        {
-                            laserHit.transform.GetComponent<Building>().TakeDamage(1);
-                        }
-                    }
-                    if (laserHit.transform.tag == "Ground")
-                    {
-                        Debug.Log("Hit Ground");
-                    }
+                    HitTest(laserHit);
                 }
-
-
             }
-            if (!Input.GetMouseButton(1))
-            {
-                laserLine.enabled = false;
-                laserBurn.Stop();
-            }
+
         }
+        #endregion
+
+        #region Raycast for mothership kills
+        RaycastHit mothershipLaserHit;
+        var mothershipHeading = cursor.position - mothershipOne.position;
+        //heading.y = 0;  // This is the overground heading.
+
+        if (Physics.Raycast(mothershipOne.transform.position, mothershipHeading, out mothershipLaserHit) && buildingBonusEnabled)
+        {
+            scoreBoard.GetComponent<ScoreUpdater>().NotifyUser("MotherShip Laser Enabled! " + Math.Abs(buildingBonusTimer).ToString("F2"));
+            Debug.Log("Momma hit something");
+            HitTest(mothershipLaserHit);
+
+        }
+        #endregion
+
+        if (!Input.GetMouseButton(1) || !superLaserEnabled)
+        {
+            laserLine.enabled = false;
+            laserBurn.Stop();
+        }
+
+        buildingLaserLineOne.SetPosition(0, mothershipOne.position);
+        buildingLaserLineOne.SetPosition(1, cursor.position);
+
+        buildingLaserLineTwo.SetPosition(0, mothershipTwo.position);
+        buildingLaserLineTwo.SetPosition(1, cursor.position);
+
+        buildingLaserLineThree.SetPosition(0, mothershipThree.position);
+        buildingLaserLineThree.SetPosition(1, cursor.position);
+
+        #region Super Laser Not Enabled
         if (!superLaserEnabled)
         {
 
 
             laserLine.enabled = false;
+            laserBurn.Stop();
+
+
 
             if (Input.GetMouseButton(1))
             {
@@ -177,27 +208,87 @@ public class ClickToMove : MonoBehaviour
             {
                 if (shotOne != null)
                 {
-                    shotOne.transform.position = Vector3.Slerp(shotOne.transform.position, new Vector3(laserTarget.x, laserTarget.y, laserTarget.z), Time.deltaTime * 5);
+                    shotOne.transform.position = Vector3.Slerp(shotOne.transform.position, new Vector3(laserTarget.x, laserTarget.y, laserTarget.z), Time.deltaTime * 10);
                 }
             }
         }
+        #endregion
+        BonusTimers();
+
+    }
+
+    private void HitTest(RaycastHit laserHit)
+    {
+        if (laserHit.transform != null)
+        {
+            if (laserHit.transform.tag == "Enemy")
+            {
+                laserHit.transform.GetComponent<Soldier>().TakeDamage(1);
+            }
+            if (laserHit.transform.tag == "Cow")
+            {
+                laserHit.transform.GetComponent<Cow>().TakeDamage(1);
+            }
+            if (laserHit.transform.tag == "Building")
+            {
+                laserHit.transform.GetComponent<Building>().TakeDamage(1);
+            }
+            if (laserHit.transform.tag == "Ground")
+            {
+                Debug.Log("Hit Ground");
+            }
+        }
+
+    }
+
+    private void BonusTimers()
+    {
         if (bonusTimer >= 100)
         {
-            bonusTimer = 0;
+            bonusTimer = 1;
+        }
+        if (buildingBonusTimer >= 100)
+        {
+            buildingBonusTimer = 1;
         }
         bonusTimer += Time.deltaTime;
+        buildingBonusTimer += Time.deltaTime;
         if (bonusTimer <= 0)
         {
             superLaserEnabled = true;
 
         }
         else superLaserEnabled = false;
-    }
+        if (buildingBonusTimer <= 0)
+        {
+            buildingBonusEnabled = true;
+            buildingLaserLineOne.enabled = true;
+            buildingLaserLineTwo.enabled = true;
+            buildingLaserLineThree.enabled = true;
 
+
+        }
+        else
+        {
+            buildingBonusEnabled = false;
+            buildingLaserLineOne.enabled = false;
+            buildingLaserLineTwo.enabled = false;
+            buildingLaserLineThree.enabled = false;
+        }
+    }
     public void BonusMode()
     {
         bonusTimer = -bonusLength;
 
+    }
+    public void BuildingBonusMode()
+    {
+        Debug.Log("Building Bonus");
+        buildingBonusTimer = -bonusLength;
+        buildingBonusEnabled = true;
+        buildingLaserLineOne.enabled = true;
+        buildingLaserLineTwo.enabled = true;
+        buildingLaserLineThree.enabled = true;
     }
 
     public void Exit()

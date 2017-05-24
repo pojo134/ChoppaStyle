@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class ScoreUpdater : MonoBehaviour {
     private int samplesCount = 0, evaporationCount = 0, buildingsDestroyedCount = 0;
-    public Text samplesText, evaporationText, buildingsDestroyedText, laserEnabledText;
+    public Text samplesText, evaporationText, buildingsDestroyedText, notifyText;
     public Transform sphere;
-    private float notificationCounter = 0;
+    public float notificationCounter = 0;
+    public int sampleCost = 1, buildingCost = 1, evapCost = 1;
+
 
     // Use this for initialization
     void Start () {
@@ -19,18 +21,27 @@ public class ScoreUpdater : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(samplesCount >= 1)
+		if(samplesCount >= sampleCost)
         {
             sphere.GetComponent<ClickToMove>().BonusMode();
-            UpdateSamples(-3);
+            UpdateSamples(-sampleCost);
         }
-        if (notificationCounter > 50)
+        if (buildingsDestroyedCount >= buildingCost)
         {
-            notificationCounter = 0;
+            sphere.GetComponent<ClickToMove>().BuildingBonusMode();
+            UpdateBuildingsDestroyed(-buildingCost);
+        }
+        if (evaporationCount >= evapCost)
+        {
+            //TODO: Make some bonus for the evaporations
+        }
+        if (notificationCounter > 10)
+        {
+            notificationCounter = 2;
         }
         notificationCounter += Time.deltaTime;
 
-        if (notificationCounter > 2)
+        if (notificationCounter > 1)
         {
             ClearUserNotify();
         }
@@ -58,13 +69,13 @@ public class ScoreUpdater : MonoBehaviour {
 
     public void NotifyUser(string s)
     {
-        laserEnabledText.text = s;
-        laserEnabledText.enabled = true;
+        notifyText.text = s;
+        notifyText.enabled = true;
         notificationCounter = 0;
     }
     public void ClearUserNotify()
     {
-        laserEnabledText.text = null;
-        laserEnabledText.enabled = false;
+        notifyText.text = null;
+        notifyText.enabled = false;
     }
 }
